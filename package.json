@@ -1,10 +1,13 @@
 {
-  "name": "sync-iam-keys",
+  "name": "@dkbhadeshiya/ssh-iam-sync",
   "version": "1.0.0",
   "description": "Sync IAM keys from groups to authorized_keys files. ",
   "main": "index.js",
   "author": "Dhruman Bhadeshiya <dhruman@kevit.io>",
   "license": "GPL 3.0",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "dependencies": {
     "aws-sdk": "2.663.0",
     "log4js": "6.2.1",

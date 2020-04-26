@@ -1,0 +1,13 @@
+{
+  "name": "sync-iam-keys",
+  "version": "1.0.0",
+  "description": "Sync IAM keys from groups to authorized_keys files. ",
+  "main": "index.js",
+  "author": "Dhruman Bhadeshiya <dhruman@kevit.io>",
+  "license": "GPL 3.0",
+  "dependencies": {
+    "aws-sdk": "2.663.0",
+    "log4js": "6.2.1",
+    "yargs": "15.3.1"
+  }
+}

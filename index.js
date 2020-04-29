@@ -87,6 +87,7 @@ async function process(args) {
     AWS.config.credentials = credentials;
 
     logger.info("Starting syncing keys...");
+    logger.info("Groups: ", args.groups.join(", "));
     logger.debug("Using AWS access key: "+ credentials.accessKeyId);
     const IAM = new AWS.IAM();
 

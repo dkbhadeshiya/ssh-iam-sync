@@ -83,8 +83,7 @@ async function getKeyBody(KeyIds, IAM) {
 }
 
 async function process(args) {
-    // const credentials = new AWS.EC2MetadataCredentials();
-    const credentials = new AWS.SharedIniFileCredentials({profile: "default"});
+    const credentials = new AWS.EC2MetadataCredentials();
     AWS.config.credentials = credentials;
 
     logger.info("Starting syncing keys...");

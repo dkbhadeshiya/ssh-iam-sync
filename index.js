@@ -4,7 +4,7 @@ const AWS = require("aws-sdk");
 const yargs = require('yargs');
 const log4js = require("log4js");
 const path = require("path")
-const logger = log4js.getLogger("SyncIAMKeys");
+const logger = log4js.getLogger("SSHIAMSync");
 const fs = require("fs");
 
 const args = yargs
@@ -110,10 +110,10 @@ async function process(args) {
     const filePath = path.normalize(args.sshPath)
     if(args.force) {
         logger.info("Replacing file: "+ filePath)
-        fs.writeFileSync(filePath, keys.join("\n") + "\n", {flag: "w", mode: 644});
+        fs.writeFileSync(filePath, keys.join("\n") + "\n", {flag: "w", mode: 0o644});
     } else {
         logger.info("Appending file: "+ filePath)
-        fs.writeFileSync(filePath, keys.join("\n") + "\n", {flag: "a", mode: 644});
+        fs.writeFileSync(filePath, keys.join("\n") + "\n", {flag: "a", mode: 0o644});
     }
 
     logger.info("SSH Keys have been synced")

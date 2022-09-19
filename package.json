@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "aws-sdk": "2.663.0",
-    "log4js": "6.2.1",
+    "log4js": "6.4.0",
     "yargs": "15.3.1"
   }
 }

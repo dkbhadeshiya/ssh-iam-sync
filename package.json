@@ -9,8 +9,8 @@
     "registry": "https://npm.pkg.github.com/"
   },
   "dependencies": {
-    "aws-sdk": "2.1218.0",
-    "log4js": "6.6.1",
-    "yargs": "17.5.1"
+    "aws-sdk": "2.1321.0",
+    "log4js": "6.8.0",
+    "yargs": "17.7.1"
   }
 }

@@ -16,11 +16,11 @@ SSH Public Key Sync for IAM Users
     Handle with care.
     
 ## Libraries used: 
-| Library Name | Version|
-|--------------|--------|
-| yargs        | 15.3.1 |
-| aws-sdk      | 2.633.0|
-| log4js       | 6.2.1  |
+| Library Name | Version |
+|--------------|---------|
+| yargs        | 15.7.1  |
+| aws-sdk      | 2.1321.0|
+| log4js       | 6.8.0   |
 
 
 ## Ideal server setup

@@ -4,30 +4,48 @@ SSH Public Key Sync for IAM Users
 ## Purpose
 - The purpose of the project is to sync SSH public files from AWS IAM users to a server.
 - Use AWS IAM Groups to manage access to your servers. 
-- The project is built using NodeJS.
+- The project is built using Go v1.20.
 
 ## Introduction
-- `index.js` file is the only file in the project which acts as a command line tool. 
-- The script accepts following arguments:
-    - `-g` or `--groups`: List of IAM groups to fetch user list from. 
-    - `-S` or `--ssh-path`: Absolute path of `authorized_keys` file to write to. Default is `~/.ssh/authorized_keys`
-    - `-f` or `--force` : Overwrite current values in `authorized_keys` and replace it every time. 
-    - `-L` or `--log-level` : Log4JS log level. Increasing log level might print sensitive information on console. 
-    Handle with care.
+- All the sources are under `cmd/ssh-iam-sync`
+- Whole code compiles in a binary `ssh-iam-sync`
+- Config file needs to be defined in order to run it, see config file below
+- Config files will be read from following folders according to priority:
+    - `./config.yaml` current folder from where the binary is running
+    - `/etc/ssh-iam-sync/config.yaml` from ETC
+
+## Configurations
+Here is the config reference file:
+```yaml
+aws:
+  method: accessKey # Either accessKey or profile or instanceProfile
+  profile: default
+  region: ap-south-1
+  accessKey: <your-access-key>
+  secretKey: <your-secret-key>
+  groups:
+    - projec1
+    - project2
+
+authorizedKeys: ~/.ssh/authorized_keys  # Path to authorized key file
+overwrite: true # Overwrite existing key file, false appends the keys to file
+```
+
     
 ## Libraries used: 
-| Library Name | Version |
-|--------------|---------|
-| yargs        | 15.7.1  |
-| aws-sdk      | 2.1321.0|
-| log4js       | 6.8.0   |
+| Library Name                             | Version  |
+|------------------------------------------|----------|
+| github.com/aws/aws-sdk-go-v2             | v1.17.5  |
+| github.com/aws/aws-sdk-go-v2/config      | v1.18.15 |
+| github.com/aws/aws-sdk-go-v2/credentials | v1.13.15 |
+| github.com/aws/aws-sdk-go-v2/service/iam | v1.19.4  |
+| github.com/kkyr/fig                      | v0.3.1   |
 
 
 ## Ideal server setup
-- Use cron to run the script every 10 minutes or so. 
-- Assign IAM role to your EC2 instance and use `EC2MetadataCredentials` instead.
+- Use cron to run the binary every 10 minutes or so. 
+- Assign IAM role to your EC2 instance and use `instanceProfile` method instead.
 
 ## Scope of improvements
-- This only syncs keys for a single user on server.
-- Multi user syncs can be done manually by setting up multiple CRON jobs to sync different groups.
-- Tested only on Linux servers. Windows servers might work but not tested. 
+- Binary can be compiled for windows servers as well 
+- Distribute using package manager

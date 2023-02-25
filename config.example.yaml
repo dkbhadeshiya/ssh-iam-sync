@@ -1,0 +1,12 @@
+aws:
+  method: accessKey # Either accessKey or profile or instanceProfile
+  profile: default
+  region: ap-south-1
+  accessKey: <your-access-key>
+  secretKey: <your-secret-key>
+  groups:
+    - projec1
+    - project2
+
+authorizedKeys: ~/.ssh/authorized_keys  # Path to authorized key file
+overwrite: true # Overwrite existing key file, false appends the keys to file

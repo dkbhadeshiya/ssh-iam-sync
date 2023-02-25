@@ -17,8 +17,8 @@ jobs:
           go-version-file: './go.mod'
           cache: true
       - name: Build
-        run: 
-          go mod download
+        run: |
+          go mod download 
           make
       - name: Publish Release
         uses: ncipollo/release-action@v1

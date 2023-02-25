@@ -1,10 +1,16 @@
-all:  vet lint build
+NAME=ssh-iam-sync
 
-vet:
-    go vet ./...
+BUILD_OS= linux darwin
+BUILD_ARCH= amd64 arm64
 
-lint:
-    go list ./... | grep -v /vendor/ | xargs -L1 golint -set_exit_status
-
+all: clean build
 build:
-    go build -o bin/ssh-iam-sync ./...
+	for OS in $(BUILD_OS); do \
+		for ARCH in $(BUILD_ARCH); do \
+			GOOS=$$OS GOARCH=$$ARCH go build -o bin/$(NAME)-$$OS-$$ARCH cmd/$(NAME)/*.go ; \
+		done ; \
+	done
+
+clean:
+	go clean
+	rm -rf bin/*

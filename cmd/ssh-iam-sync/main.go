@@ -1,8 +1,6 @@
 package main
 
 import (
-	"internal/awssync"
-	"internal/config"
 	"log"
 	"os"
 	"path/filepath"
@@ -10,8 +8,8 @@ import (
 )
 
 func main() {
-	c := config.GetAppConfig()
-	keys := awssync.GetSSHKeys(c)
+	c := GetAppConfig()
+	keys := GetSSHKeys(c)
 
 	log.Println("Writing SSH keys to file: " + c.AuthorizedKeys)
 	var file *os.File

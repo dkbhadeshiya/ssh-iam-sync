@@ -23,6 +23,6 @@ jobs:
       - name: Publish Release
         uses: ncipollo/release-action@v1
         with: 
-          artificts: "bin/*"
+          artifacts: "bin/*"
 
 

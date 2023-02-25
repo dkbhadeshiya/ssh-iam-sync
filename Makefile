@@ -7,7 +7,7 @@ all: clean build
 build:
 	for OS in $(BUILD_OS); do \
 		for ARCH in $(BUILD_ARCH); do \
-			GOOS=$$OS GOARCH=$$ARCH go build -o bin/$(NAME)-$$OS-$$ARCH cmd/$(NAME)/*.go ; \
+			GOOS=$$OS GOARCH=$$ARCH go build -o bin/$(NAME)-$$GITHUB_REF_NAME-$$OS-$$ARCH cmd/$(NAME)/*.go ; \
 		done ; \
 	done
 

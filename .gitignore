@@ -47,3 +47,4 @@ go.work
 
 config.yaml
 bin/
+build/

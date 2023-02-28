@@ -3,6 +3,8 @@ on:
   push:
     tags:
       - "*"
+    branch:
+      - feature/*
 
 jobs:
   build:
@@ -20,9 +22,27 @@ jobs:
         run: |
           go mod download 
           make
+      - name: Package for Debian amd64
+        id: pack-deb-amd64
+        uses: jiro4989/build-deb-action@v2
+        with: 
+          package: ssh-iam-sync
+          package_root: build/ssh-iam-sync-${{ github.GITHUB_REF_NAME }}-amd64
+          maintainer: Dhruman Bhadeshiya
+          version: ${{ github.GITHUB_REF_NAME }}
+          arch: 'amd64'
+          desc: 'Sync IAM users to SSH authorized_keys'
+      - name: Package for Debian arm64
+        id: pack-deb-arm64
+        uses: jiro4989/build-deb-action@v2
+        with: 
+          package: ssh-iam-sync
+          package_root: build/ssh-iam-sync-${{ github.GITHUB_REF_NAME }}-arm64
+          maintainer: Dhruman Bhadeshiya
+          version: ${{ github.GITHUB_REF_NAME }}
+          arch: 'arm64'
+          desc: 'Sync IAM users to SSH authorized_keys'
       - name: Publish Release
         uses: ncipollo/release-action@v1
         with: 
-          artifacts: "bin/*"
-
-
+          artifacts: "bin/*, build/*.deb"

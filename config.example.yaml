@@ -1,5 +1,5 @@
 aws:
-  method: accessKey # Either accessKey or profile or instanceProfile
+  method: iamProfile # Either accessKey or profile or iamProfile
   profile: default
   region: ap-south-1
   accessKey: <your-access-key>

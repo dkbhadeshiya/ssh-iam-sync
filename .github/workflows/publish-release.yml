@@ -5,7 +5,8 @@ on:
       - "*"
     branch:
       - feature/*
-
+env:
+  env_var: ${{ vars.ENV_CONTEXT_VAR }}
 jobs:
   build:
     name: Build Binaries
@@ -27,9 +28,9 @@ jobs:
         uses: jiro4989/build-deb-action@v2
         with: 
           package: ssh-iam-sync
-          package_root: build/ssh-iam-sync-${{ GITHUB_REF_NAME }}-amd64
+          package_root: build/ssh-iam-sync-${{ vars.GITHUB_REF_NAME }}-amd64
           maintainer: Dhruman Bhadeshiya
-          version: ${{ github.GITHUB_REF_NAME }}
+          version: ${{ vars.GITHUB_REF_NAME }}
           arch: 'amd64'
           desc: 'Sync IAM users to SSH authorized_keys'
       - name: Package for Debian arm64
@@ -37,9 +38,9 @@ jobs:
         uses: jiro4989/build-deb-action@v2
         with: 
           package: ssh-iam-sync
-          package_root: build/ssh-iam-sync-${{ GITHUB_REF_NAME }}-arm64
+          package_root: build/ssh-iam-sync-${{ vars.GITHUB_REF_NAME }}-arm64
           maintainer: Dhruman Bhadeshiya
-          version: ${{ github.GITHUB_REF_NAME }}
+          version: ${{ vars.GITHUB_REF_NAME }}
           arch: 'arm64'
           desc: 'Sync IAM users to SSH authorized_keys'
       - name: Publish Release

@@ -27,7 +27,7 @@ jobs:
         uses: jiro4989/build-deb-action@v2
         with: 
           package: ssh-iam-sync
-          package_root: build/ssh-iam-sync-${{ github.GITHUB_REF_NAME }}-amd64
+          package_root: build/ssh-iam-sync-${{ GITHUB_REF_NAME }}-amd64
           maintainer: Dhruman Bhadeshiya
           version: ${{ github.GITHUB_REF_NAME }}
           arch: 'amd64'
@@ -37,7 +37,7 @@ jobs:
         uses: jiro4989/build-deb-action@v2
         with: 
           package: ssh-iam-sync
-          package_root: build/ssh-iam-sync-${{ github.GITHUB_REF_NAME }}-arm64
+          package_root: build/ssh-iam-sync-${{ GITHUB_REF_NAME }}-arm64
           maintainer: Dhruman Bhadeshiya
           version: ${{ github.GITHUB_REF_NAME }}
           arch: 'arm64'

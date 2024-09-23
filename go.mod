@@ -7,7 +7,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/config v1.18.32
 	github.com/aws/aws-sdk-go-v2/credentials v1.13.31
 	github.com/aws/aws-sdk-go-v2/service/iam v1.22.1
-	github.com/kkyr/fig v0.3.2
+	github.com/kkyr/fig v0.4.0
 )
 
 require (
@@ -21,6 +21,6 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/sts v1.21.1 // indirect
 	github.com/aws/smithy-go v1.14.0 // indirect
 	github.com/mitchellh/mapstructure v1.5.0 // indirect
-	github.com/pelletier/go-toml v1.9.5 // indirect
+	github.com/pelletier/go-toml/v2 v2.1.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
